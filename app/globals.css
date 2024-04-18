@@ -1,33 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* These are directives used by Tailwind CSS to include its base styles, component styles, and utility classes respectively. */
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
+
+/* This block applies styles to the body element. */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #030015!important;
+  /* overrides any previous background styles using !important. */
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 100vw;
+  min-height: 100vh; 
+  overflow-x: clip;
+  /* This ensures that if any content within the body exceeds the viewport width horizontally,
+   it will be clipped or cut off, and users won't be able to scroll horizontally to see the hidden content. */
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* By default, when a user taps on an element in a web page on a touch-enabled device,
+   the browser may apply a highlight effect to indicate that the element has been tapped.  */
+  scroll-behavior: smooth;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+* {
+  scroll-behavior: smooth;
+}
+/* * { ... }:
+This block applies styles to all elements. */
+
+.banner {
+  min-height: 100vh;
+  /* height of the viewport, which is the visible 
+  area of the web page within the browser window.
+  100vh as the height for an element creating full-screen sections or layouts */
+  background-image: url("https://pixner.net/aikeu/assets/images/banner/banner-one-bg.png");
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 1;
+  /* Increasing the z-index value of an element places it higher in the stacking order,
+   making it appear in front of elements with lower z-index values within the same stacking context.
+   They set the z-index property to 1 to ensure the banners are above other elements.
+   */
+}
+@media screen and (max-width: 760px) {
+     .banner{
+      min-height: unset!important;
+     }
+}
+.banner::before {
+  position: absolute;
+  top: 0px;
+  left: -150px;
+  content: "";
+  width: 500px;
+  height: 500px;
+  min-height: 300px;
+  border-radius: 50%;
+  background: rgba(75, 255, 223, 0.24);
+  filter: blur(227px);
+  /* z-index: -1; */
+}
+.banner::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -100px;
+  content: "";
+  width: 430px;
+  height: 430px;
+  min-height: 300px;
+  border-radius: 50%;
+  background: rgba(75, 169, 255, 0.44);
+  filter: blur(272px);
+  /* z-index: -1; */
+}
+.shop-banner {
+  background-image: url("https://pixner.net/aikeu/assets/images/banner/cmn-bg.png");
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 1;
+  height: 50vh;
+}
+.before\:transition-background::before {
+  background-color: transparent !important;
+}
+.sellers-banner {
+  background: linear-gradient(132deg, #5fec46 0%, #46e695 100%);
 }
