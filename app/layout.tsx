@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Provider from "./(Providers)/NextUIProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const monserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
+//configure tailwind.config file for font-montserrat
 
 export const metadata: Metadata = {
   title: "Prompt Store",
@@ -17,11 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      /* wrap childern with nextUi element */
-      <Provider>
+      <body className={`${inter.className} ${monserrat.className}`}>
+        <Provider>
         {children}
       </Provider>
-      <body className={inter.className}>{children}</body>
+      
+      </body>
     </html>
   );
 }
