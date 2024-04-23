@@ -4,15 +4,18 @@ import Navigation from "./Navigation";
 import { AiOutlineSearch } from "react-icons/ai"; //for icons
 import { CgProfile } from "react-icons/cg"; // for icon
 import { FaBars } from "react-icons/fa";
-
+import { User } from "@clerk/nextjs/server";
+import DropDown from "./DropDown"
 type Props = {
   activeItem: number;
+  user:User|null;
 };
 
-const Header = ({ activeItem }: Props) => {
+const Header = ({ user,activeItem }: Props) => {
   const [active, setactive] = useState(false);
   const [Open, setOpen] = useState(false);
-
+const [activeProfile, setactiveProfile] = useState(false);
+const [isSellerExist, setisSellerExist] = useState(false);
 
 
   const handleClose= (e:React.MouseEvent)=>{
@@ -23,15 +26,26 @@ const Header = ({ activeItem }: Props) => {
   
   }
 
+
+  const handleProfile= ()=>{
+    setactiveProfile(!activeProfile)
+  }
+
+
+  
+
   if (typeof window != "undefined") {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
+        console.log(user);
         setactive(true);
       } else {
         setactive(false);
       }
     });
   }
+
+
   return (
     <div
       className={`w-full p-5 min-h-[60px] border-b border-b-[#ffffff32] transition-opacity
@@ -60,9 +74,26 @@ const Header = ({ activeItem }: Props) => {
           <div className="flex items-center ml-10">
             <AiOutlineSearch className="text-[25px] mr-5 cursor-pointer"></AiOutlineSearch>
 
+            {user ? (
+            <div>
+              <DropDown
+                user={user}
+                setOpen={setOpen}
+                handleProfile={handleProfile}
+                isSellerExist={isSellerExist}
+              />
+            </div>
+          ) : (
             <Link href="/sign-in">
-              <CgProfile className="text-[25px] cursor-pointer"></CgProfile>
+              <CgProfile className="text-[25px] cursor-pointer" />
             </Link>
+          )}
+           
+            {/* <UserButton afterSignOutUrl="/"/>   */}
+            {/* it is from clerk  */}
+
+
+
           </div>
         </div>
       </div>
@@ -98,6 +129,14 @@ const Header = ({ activeItem }: Props) => {
             <div className="fixed bg-black h-screen top-0 w-[60%] right-0 z-[9999]">
                 <div className="mt-20 p-5">
                   <Navigation activeItem={activeItem}></Navigation>
+                  {user && (
+                  <DropDown
+                    user={user}
+                    setOpen={setOpen}
+                    handleProfile={handleProfile}
+                    isSellerExist={isSellerExist}
+                  />
+                )}
 
                 </div>
 

@@ -1,8 +1,9 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Provider from "./(Providers)/NextUIProvider";
-
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -23,13 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${monserrat.className}`}>
-        <Provider>
-        {children}
-      </Provider>
-      
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${inter.className} ${monserrat.className}`}>
+          <Provider>
+            <Toaster position="top-center" reverseOrder={false}></Toaster>
+            {children}
+            </Provider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
