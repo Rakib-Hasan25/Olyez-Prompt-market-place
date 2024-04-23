@@ -9,6 +9,13 @@ import About from '@/components/Route/About'
 import PromptCard from "@/components/Prompts/PromptCard";
 import Footer from "@/components/Layout/Footer";
 import { Divider } from "@nextui-org/react";
+import BestSellers from "@/components/Shop/BestSellers"
+import Future from "@/components/Route/Future"
+import Partners from "@/components/Route/Partner"
+import SellerBanner from "@/components/Shop/SellerBanner"
+
+
+
 type Props = {
 
 }
@@ -46,8 +53,20 @@ function Page({}: Props) {
               <PromptCard />
               <PromptCard />
               <PromptCard />
+              <PromptCard />
+
 
             </div>
+
+            <br/>
+            <BestSellers />
+            <Future />
+            <Partners />
+            <SellerBanner  />
+
+
+
+
            </div>
 
 

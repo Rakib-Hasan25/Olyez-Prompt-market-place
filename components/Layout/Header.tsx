@@ -9,11 +9,6 @@ type Props = {
   activeItem: number;
 };
 
-
-
-
-
-
 const Header = ({ activeItem }: Props) => {
   const [active, setactive] = useState(false);
   const [Open, setOpen] = useState(false);
