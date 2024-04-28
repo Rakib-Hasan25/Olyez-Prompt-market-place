@@ -24,11 +24,14 @@ type Props = {
 function Page({}: Props) {
 const [user,setUser]=useState(null);
 const [loading, setloading] = useState(false)
+const [isSellerExist, setisSellerExist] = useState(false)
+
 useEffect(()=>{
 setloading(true)
   axios.get("api/me").then((res)=>{
     console.log(res.data)
     setUser(res.data.user)
+    setisSellerExist(res.data.shop?true:false)
     setloading(false)
   }).catch((err)=>{
     console.log(err)
@@ -50,7 +53,7 @@ setloading(true)
 <div>
 
 <div className='banner'>
-<Header activeItem={0} user={user} />
+<Header activeItem={0} user={user} isSellerExist ={isSellerExist}/>
 <Hero />
 </div>
 <Image

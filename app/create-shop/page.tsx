@@ -13,6 +13,7 @@ const Page = (props: Props) => {
   const { user } = useUser(); 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+
   const [shopData, setShopData] = useState({
     name: "",
     description: "",
