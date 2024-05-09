@@ -36,7 +36,7 @@ const Footer = (props: Props) => {
             </li>
             <li>
               <Link
-                href="/contact-us"
+                href="/about-us"
                 className={`${styles.label} hover:text-[#64ff4b] duration-200 transition px-4`}
               >
                 Contact Us
