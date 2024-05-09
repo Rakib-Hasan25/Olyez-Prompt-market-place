@@ -8,7 +8,7 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <div className="mt-8">
-      <div className="w-full mb-5 flex justify-between items-center">
+      <div className="w-full mb-5 flex justify-evenly items-center">
         <div>
           <Link href={"/"}>
             <h1 className="font-Inter text-3xl cursor-pointer">
@@ -36,7 +36,7 @@ const Footer = (props: Props) => {
             </li>
             <li>
               <Link
-                href="/about-us"
+                href="/contact-us"
                 className={`${styles.label} hover:text-[#64ff4b] duration-200 transition px-4`}
               >
                 Contact Us
@@ -45,7 +45,7 @@ const Footer = (props: Props) => {
           </ul>
         </div>
       </div>
-      <p className={`${styles.paragraph} text-center`}>
+      <p className={`${styles.paragraph} text-center pt-5`}>
         Copyright © 2024 Olyez. All Rights Reserved
       </p>
       <br />

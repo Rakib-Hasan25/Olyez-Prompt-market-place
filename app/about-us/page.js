@@ -117,7 +117,7 @@ export default function contact_us(){
 
     return (
         <>
-        <Header />
+        <Header activeItem={1} />
 
         <div className=" p-4 max-w-xl mx-auto">
             <h1 className=" text-3xl font-bold"> Frequently Asked Questions </h1>

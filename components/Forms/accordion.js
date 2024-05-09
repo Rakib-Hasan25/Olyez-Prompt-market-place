@@ -1,4 +1,3 @@
-
 import { BiSolidLeftArrow , BiSolidRightArrow    } from "react-icons/bi";
 import {Collapse} from 'react-collapse'
 
