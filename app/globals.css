@@ -92,3 +92,7 @@ This block applies styles to all elements. */
 .sellers-banner {
   background: linear-gradient(132deg, #5fec46 0%, #46e695 100%);
 }
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
