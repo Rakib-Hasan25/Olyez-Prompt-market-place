@@ -1,18 +1,36 @@
 import { Avatar, Card, Divider } from '@nextui-org/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 import { styles } from '@/utils/styles';
 import Link from 'next/link';
 import Ratings from '@/utils/Ratings';
+import { getShopById } from '@/actions/shop/getShopById';
 
-type Props = {}
+type Props = {
+  prompt:any
+}
 
-const PromptCard = (props: Props) => {
+const PromptCard = ({prompt}: Props) => {
+  const[shop,setShop] = useState<any>()
+
+
+  useEffect(() => {
+    if(prompt){
+      getShopInfo()
+    }
+    
+  },[prompt])
+  const getShopInfo = async()=>{
+    const filteredShop= await getShopById(prompt.sellerId)
+    setShop(filteredShop)
+    console.log(shop)
+  }
+
   return (
     <Card radius='lg' className='w-full md:w-[31%] 2xl:w-[23%]  p-4 bg-[#130f23] m-3'> 
     <div className="relative">
     <Image
-          src={"https://pixner.net/aikeu/assets/images/banner/small-slider/two.png"}
+          src={prompt.images[0].url}
           alt=""
           className="w-full !max-h-[200px] object-cover"
           width={300}
@@ -28,29 +46,29 @@ const PromptCard = (props: Props) => {
               width={25}
               height={25}
               />
-              <span className={`${styles.label} pl-2 text-white`}> Chatgpt</span>
+              <span className={`${styles.label} pl-2 text-white`}> {prompt?.category}</span>
           </div>
         </div>
     </div>
 
     <div className='w-full flex justify-between py-2'>
         <h3 className={`${styles.label} text-[18px] text-white`}>
-          Animated Prompts
+          {prompt?.name}
         </h3>
-        <p className={`${styles.paragraph}`}>$25.00</p>
+        <p className={`${styles.paragraph}`}>${prompt.price}</p>
     </div>
 
 
     <Divider className="bg-[#ffffff18] my-3" />
       <div className="w-full flex items-center justify-between">
         <div className="flex items-center">
-          <Avatar src="https://avatars.githubusercontent.com/u/108027004?v=4" />
-          <span className={`${styles.label} pl-3`}>@Rakib Hasan</span>
+          <Avatar src={shop?.avatar??""} />
+          <span className={`${styles.label} pl-3`}>{shop?.name??""}</span>
         </div>
-        <Ratings rating={4.5} />
+        <Ratings rating={prompt.rating} />
       </div>
       <br />
-      <Link href={`/prompt/}`} className="w-full">
+      <Link href={`/prompt/${prompt.id}}`} className="w-full">
         <div
           className={`${styles.button} !py-2 !px-3 text-center mb-3 w-full text-white bg-transparent border border-[#16c252] hover:bg-[#16c252] hover:text-black duration-300 transition-opacity font-Inter font-[600]`}
         >

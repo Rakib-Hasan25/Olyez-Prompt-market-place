@@ -16,7 +16,7 @@ const navItems = [
   },
   {
     title: "Marketplace",
-    href: "/contact",
+    href: "/marketplace",
   },
   {
     title: "Contact Us",
