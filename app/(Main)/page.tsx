@@ -1,5 +1,5 @@
 import React from 'react'
-import RoutePage from './_page'
+import PromptDetailsPage from './_page'
 import { getUser } from '@/actions/user/getUser'
 import getAllPrompts from '@/actions/prompt/getAllPrompts'
 type Props = {}
@@ -11,7 +11,7 @@ type Props = {}
   // console.log(prompts)
   return (
     <div>
-      <RoutePage user ={data?.user}  isSellerExist ={data?.shop?true:false} prompts={prompts}  />
+      <PromptDetailsPage user ={data?.user}  isSellerExist ={data?.shop?true:false} prompts={prompts}  />
       </div>
   )
 }
