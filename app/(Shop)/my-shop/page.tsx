@@ -1,17 +1,26 @@
-"use client"
-import React from 'react'
 import ShopSidebar from "@/components/Shop/ShopSidebar";
-import UploadPrompt from '@/components/Shop/UploadPrompt';
+import ShopRoot from "./_page";
+import { getUser } from "@/actions/user/getUser";
+import { getAllPromptsByShop } from "@/actions/shop/getAllPromptsByShop";
+import { getShopOrders } from "@/actions/orders/getShopOrder";
 
-type Props = {}
+type Props = {};
 
-export default function shop({}: Props) {
+const Page = async (props: Props) => {
+  const sellerId: any = await getUser();
+  const ordersData = await getShopOrders({ sellerId: sellerId?.user.id });
+  const promptsData = await getAllPromptsByShop();
+
   return (
     <div className="flex w-full">
-    <div className="h-screen flex p-2 bg-[#111C42] md:w-[20%] 2xl:w-[17%]">
-      <ShopSidebar active={0} />
+      <div className="h-screen flex p-2 bg-[#111C42] md:w-[20%] 2xl:w-[17%]">
+        <ShopSidebar active={0} />
+      </div>
+      <div className="md:w-[80%] 2xl:w-[83%]">
+        <ShopRoot ordersData={ordersData} promptsData={promptsData} />
+      </div>
     </div>
-    
-  </div>
-  )
-}
+  );
+};
+
+export default Page;
