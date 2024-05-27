@@ -69,6 +69,7 @@ const MarketPlaceRouter = ({
     }
   }, [initialPage, router]);
 
+  
   useEffect(() => {
     if(searchquery){
       fetchSearchdata()

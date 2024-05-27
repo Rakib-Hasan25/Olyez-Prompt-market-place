@@ -5,7 +5,7 @@ import Footer from "@/components/Layout/Footer";
 import { Divider } from "@nextui-org/react";
 import { useState } from "react";
 
-export default function contact_us(){
+export default function About_us(){
 
     const [open, setOpen] = useState(false);
 
