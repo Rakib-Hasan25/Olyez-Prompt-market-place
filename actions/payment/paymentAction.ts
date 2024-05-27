@@ -1,15 +1,19 @@
 "use server";
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+// const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import Stripe from "stripe"
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!, {
+  apiVersion:"2024-04-10"
+})
 
 // send stripe publishable key
 export const stripePublishableKey = () => {
-  const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+  const publishableKey =  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
   console.log(publishableKey);
   return publishableKey;
 };
 
 // send stripe payment intent
-export const stripePaymentIntent = async ({ amount }: { amount: Number }) => {
+export const stripePaymentIntent = async ({ amount }: { amount: number }) => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
@@ -21,8 +25,26 @@ export const stripePaymentIntent = async ({ amount }: { amount: Number }) => {
         enabled: true,
       },
     });
-    const  plainpaymentIntent = JSON.parse(JSON.stringify(paymentIntent));
 
+
+    // const checkoutSesion = await stripe.checkout.sessions.create({
+    //   success_url:`${process.env.NEXT_PUBLIC_WEBSITE_URL}/marketplace`,
+    //   cancel_url:`${process.env.NEXT_PUBLIC_WEBSITE_URL}/marketplace`,
+    //   payment_method_types:['card','paypal'],
+    //   mode:'payment',
+    //   metadata:{
+    //     company: "Olyez",
+    //   },
+    //   line_items:[{price:amount as string }],
+    // })
+
+
+
+
+    // return {url:checkoutSesion.url}
+
+    const  plainpaymentIntent = JSON.parse(JSON.stringify(paymentIntent));
+    console.log(plainpaymentIntent)
     return plainpaymentIntent;
   } catch (error) {
     console.log(error);

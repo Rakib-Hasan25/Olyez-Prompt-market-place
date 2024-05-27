@@ -42,23 +42,22 @@ const CheckoutForm = ({
 
     try{
         const userData = await getUser();
-        // if (!stripe || !elements) {
-        //   return;
-        // }
-        // const { error, paymentIntent } = await stripe.confirmPayment({
-        //   elements,
-        //   redirect: "if_required",
-        // });
-        if (1) {
+        if (!stripe || !elements) {
+          return;
+        }
+        const { error, paymentIntent } = await stripe.confirmPayment({
+          elements,
+          redirect: "if_required",
+        });
+        if (error) {
+          setMessage(error.message);
+        } else if (paymentIntent && paymentIntent.status === "succeeded") {
           await newOrder({
             userId: userData?.user?.id!,
             promptId: promptData.id,
-            payment_id:"2",
-            payment_method: "visa",
-          }
-        ).then((res) => {
-          console.log(res);
-          toast.success("Prompt uploaded successfully");
+            payment_id: paymentIntent.id,
+            payment_method: paymentIntent.id!,
+          }).then((res) => {
             setOpen(!open);
             window.location.reload();
           });
