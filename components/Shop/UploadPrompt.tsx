@@ -14,6 +14,7 @@ import React, { ChangeEvent, DragEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+import Loader from "@/utils/Loader";
 
 type Props = {}
 
@@ -264,6 +265,10 @@ const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
 
   return (
+    isLoading?
+    <>
+    <Loader/>
+    </>:
     <div>
     <h1 className={`${styles.heading} text-center py-5`}>
       Upload Your Prompt

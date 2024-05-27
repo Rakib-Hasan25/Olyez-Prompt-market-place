@@ -72,7 +72,6 @@ const [activeProfile, setactiveProfile] = useState(false);
         <div className="flex">
           <Navigation activeItem={activeItem}></Navigation>
           <div className="flex items-center ml-10">
-            <AiOutlineSearch className="text-[25px] mr-5 cursor-pointer"></AiOutlineSearch>
 
             {user ? (
             <div>

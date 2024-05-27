@@ -21,6 +21,7 @@ function PromptDetailsCard({ promptData,stripePromise,clientSecret }: Props) {
   
   const percentageDifference = ((promptData?.estimatedPrice - promptData?.price) / promptData?.estimatedPrice) * 100;
   const [open, setOpen] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const promptDiscount = percentageDifference?.toFixed(0);
 

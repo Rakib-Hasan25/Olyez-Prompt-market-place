@@ -42,12 +42,10 @@ useEffect((
 },[publishableKey,promptData])
 
 
-const newPaymentIntent= async({amount}:{amount:Number})=>{
+const newPaymentIntent= async({amount}:{amount:number})=>{
    const paymentIntent= await stripePaymentIntent({amount})
    console.log(paymentIntent?.client_secret)
    setClientSecret(paymentIntent?.client_secret)
-
-   
 }
 
 
@@ -61,7 +59,7 @@ if(!isMounted){
         <div className='shop-banner '>
     <Header activeItem={2} user={user} isSellerExist={isSellerExist} >
     </Header>
-    <ShopBanner title={promptData?.name!} />
+    {/* <ShopBanner title={promptData?.name!} /> */}
   
 </div>
 <div className="w-[95%] md:w-[80%] xl:w-[85%] 2xl:w-[80%] m-auto">

@@ -6,55 +6,112 @@ export async function GET(req:NextRequest){
     try{
         const {query} = parse(req.url,true);
         const pageNumber = query.page ? parseInt(query.page.toString(), 10) : 1;
+        const searchquery = query.search;
         const pageSize=8
+      console.log(searchquery);
+      console.log(typeof(searchquery));
 
+      if(searchquery){
         const prompts: any = await prisma.prompts.findMany({
-            include: {
-              orders: true,
-              images: true,
-              reviews: true,
-              promptUrl: true,
-            },
-            where: {
-              status: "Live",
-            },
-            take: pageSize,
-            skip: (pageNumber - 1) * pageSize,
-            orderBy: {
-              createdAt: "desc",
-            },
-          });
-
-
-          const totalPrompts: any = await prisma.prompts.findMany({
-            where: {
-              status: "Live",
-            },
-            include: {
-              images: true,
-            },
-          });
-      
-          if (prompts) {
-            for (const prompt of prompts) {
-              const shop = await prisma.shops.findUnique({
-                where: {
-                  userId: prompt.sellerId,
-                },
-              });
-              prompt.shop = shop;
-            }
-      
-            for (const prompt of totalPrompts) {
-              const shop = await prisma.shops.findUnique({
-                where: {
-                  userId: prompt.sellerId,
-                },
-              });
-              prompt.shop = shop;
-            }
+          include: {
+            orders: true,
+            images: true,
+            reviews: true,
+            promptUrl: true,
+          },
+          where: {
+            status: "Live",
+            name: searchquery as string
+          },
+          take: pageSize,
+          skip: (pageNumber - 1) * pageSize,
+          orderBy: {
+            createdAt: "desc",
+          },
+        });
+        const totalPrompts: any = await prisma.prompts.findMany({
+          where: {
+            status: "Live",
+            name: searchquery as string
+          },
+          include: {
+            images: true,
+          },
+        });
+        if (prompts) {
+          for (const prompt of prompts) {
+            const shop = await prisma.shops.findUnique({
+              where: {
+                userId: prompt.sellerId,
+              },
+            });
+            prompt.shop = shop;
           }
-          return NextResponse.json({ prompts, totalPrompts });
+    
+          for (const prompt of totalPrompts) {
+            const shop = await prisma.shops.findUnique({
+              where: {
+                userId: prompt.sellerId,
+              },
+            });
+            prompt.shop = shop;
+          }
+        }
+        return NextResponse.json({ prompts, totalPrompts });
+
+      }
+      else{
+        const prompts: any = await prisma.prompts.findMany({
+          include: {
+            orders: true,
+            images: true,
+            reviews: true,
+            promptUrl: true,
+          },
+          where: {
+            status: "Live",
+          },
+          take: pageSize,
+          skip: (pageNumber - 1) * pageSize,
+          orderBy: {
+            createdAt: "desc",
+          },
+        });
+        const totalPrompts: any = await prisma.prompts.findMany({
+          where: {
+            status: "Live",
+          },
+          include: {
+            images: true,
+          },
+        });
+        if (prompts) {
+          for (const prompt of prompts) {
+            const shop = await prisma.shops.findUnique({
+              where: {
+                userId: prompt.sellerId,
+              },
+            });
+            prompt.shop = shop;
+          }
+    
+          for (const prompt of totalPrompts) {
+            const shop = await prisma.shops.findUnique({
+              where: {
+                userId: prompt.sellerId,
+              },
+            });
+            prompt.shop = shop;
+          }
+        }
+        return NextResponse.json({ prompts, totalPrompts });
+
+      }
+       
+
+
+         
+      
 
 
         

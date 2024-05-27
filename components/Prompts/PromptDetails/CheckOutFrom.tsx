@@ -58,14 +58,17 @@ const CheckoutForm = ({
             payment_id: paymentIntent.id,
             payment_method: paymentIntent.id!,
           }).then((res) => {
+            setMessage("successfully order completed");
+            toast.success("successfully order completed");
             setOpen(!open);
             window.location.reload();
           });
         }
-
     }
     catch(error){
         console.log(error)
+        toast.error("something went wrong while order");
+
 
     }
     

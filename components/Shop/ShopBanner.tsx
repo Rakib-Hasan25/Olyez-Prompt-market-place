@@ -1,6 +1,7 @@
 import { styles } from "@/utils/styles";
 import Image from "next/image";
 import React from "react";
+import Search from "../search/search";
 
 const ShopBanner = ({ title }: { title: string }) => {
   return (
@@ -16,11 +17,17 @@ const ShopBanner = ({ title }: { title: string }) => {
           className="absolute top-1 left-40"
         />
       </div>
+      <div className="mt-1">
+      <div className="mb-20">
+        <Search/>
+      </div>
       <h4
-        className={`${styles.heading} font-Monserrat xl:text-6xl 2xl:text-7xl`}
+        className={`${styles.heading} font-Monserrat xl:text-6xl 2xl:text-7xl mb-20`}
       >
         {title}
       </h4>
+      </div>
+      
       <div>
         <Image
           src={
