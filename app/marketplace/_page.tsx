@@ -5,7 +5,7 @@ import Header from "@/components/Layout/Header";
 import ShopBanner from "@/components/Shop/ShopBanner";
 import { User } from "@clerk/nextjs/server";
 import { Divider, Pagination } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter,useSearchParams } from "next/navigation";
 import PromptCard from "@/components/Prompts/PromptCard";
 import PromptCardLoader from "@/utils/PromptCardLoader";
@@ -25,11 +25,11 @@ const MarketPlaceRouter = ({
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  const search = useSearchParams()
-  const searchquery = search?.get('search')
-  console.log(searchquery)
+  const search = useSearchParams();
+  const searchquery = search?.get('search');
+  console.log(searchquery);
 
-  const fetchPromptsData = async () => {
+  const fetchPromptsData = useCallback(async () => {
     setLoading(true);
     try {
       const response = await fetch(`/api/get-prompts?page=${initialPage}`);
@@ -41,8 +41,9 @@ const MarketPlaceRouter = ({
     } finally {
       setLoading(false);
     }
-  };
-  const fetchSearchdata = async()=>{
+  }, [initialPage]);
+
+  const fetchSearchdata = useCallback(async () => {
     setLoading(true);
     try {
       const response = await fetch(`/api/get-prompts?page=${initialPage}&search=${searchquery}`);
@@ -54,8 +55,7 @@ const MarketPlaceRouter = ({
     } finally {
       setLoading(false);
     }
-
-  }
+  }, [initialPage, searchquery]);
 
   useEffect(() => {
     if (!isMounted) {
@@ -69,17 +69,16 @@ const MarketPlaceRouter = ({
     }
   }, [initialPage, router]);
 
-  
   useEffect(() => {
-    if(searchquery){
-      fetchSearchdata()
-    }
-    else{
+    if (searchquery) {
+      fetchSearchdata();
+    } else {
       fetchPromptsData();
     }
-   
-  }, [initialPage,searchquery]);
+  }, [initialPage, searchquery, fetchPromptsData, fetchSearchdata]);
   
+
+
 
   if (!isMounted) {
     return null;
