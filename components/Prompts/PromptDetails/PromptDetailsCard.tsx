@@ -32,9 +32,7 @@ function PromptDetailsCard({ promptData,stripePromise,clientSecret }: Props) {
   };
 
 
-  const method =(token: Token  )=>{
-
-  }
+ 
 
   return (
     <div className="bg-#[1211023] p-3 w-full min-h-[50vh] shadow rounded-xl mt-8 ">
@@ -130,38 +128,6 @@ function PromptDetailsCard({ promptData,stripePromise,clientSecret }: Props) {
             >
               Buy now ${promptData?.price}
             </Button>
-             {/* {/* <StripeCheckout
-        token={method}
-        amount={3000} 
-        currency="USD"
-        stripeKey={process.env.STRIPE_PUBLISHABLE_KEY as string}
-        name="Buy Product"
-        
-      >
-        <button type="button">
-          Pay Now $30
-        </button>
-       
-        </StripeCheckout> */}
-        {/* <StripeCheckout
-        name="Your Product Name"
-        description="Your product description"
-        amount={3000} // Amount in cents ($30.00)
-        currency="USD"
-        stripeKey={process.env.STRIPE_PUBLISHABLE_KEY as string}
-        token={method}
-      >
-    
-        
-      </StripeCheckout>
-      */ 
-      }
-      
-
-
-
-
-
           </div>
         </div>
       </div>
