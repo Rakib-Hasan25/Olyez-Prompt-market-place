@@ -8,7 +8,7 @@ import Ratings from "@/utils/Ratings";
 import { IoCloseOutline } from "react-icons/io5";
 import {Elements} from "@stripe/react-stripe-js"
 import CheckOutFrom from "./CheckOutFrom";
-import StripeCheckout,{ Token }  from 'react-stripe-checkout';
+// import StripeCheckout,{ Token }  from 'react-stripe-checkout';
 type Props = {
   promptData: any;
   stripePromise:any;
