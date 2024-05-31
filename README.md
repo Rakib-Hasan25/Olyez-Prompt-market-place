@@ -42,7 +42,7 @@
 
 ## Online Demo ⚡️
 
-[olyez-prompt-marketplace](https://olyez-prompt-marketplace.vercel.app)
+[olyez-prompt-marketplace](https://olyez-prompt-market-place.vercel.app)
 
 
 
@@ -62,16 +62,16 @@ Install my-project with npm
 ### Resources I follow 
 
 #### youtube-channel
-1.[Hitesh Choudhary](https://www.youtube.com/@HiteshChoudharydotcom)
-2.[Becodemy](https://www.youtube.com/@BecodemyOfficial)
-3.[Hartirat Singh](https://www.youtube.com/@harkirat1)
-4.[Shadee Merhi](https://www.youtube.com/@shadmerhi)
-5.[Hamed Bahram](https://www.youtube.com/@hamedbahram)
+1. [Hitesh Choudhary](https://www.youtube.com/@HiteshChoudharydotcom)
+2. [Becodemy](https://www.youtube.com/@BecodemyOfficial)
+3. [Hartirat Singh](https://www.youtube.com/@harkirat1)
+4. [Shadee Merhi](https://www.youtube.com/@shadmerhi)
+5. [Hamed Bahram](https://www.youtube.com/@hamedbahram)
 
 #### documentation
-1.[Nextjs](https://nextjs.org/)
-2.[NextUI](https://nextui.org/)
-3.[tailwind css](https://tailwindcss.com/)
-4.[Stripe](https://stripe.com/)
-5.[npm](https://www.npmjs.com/)
+1. [Nextjs](https://nextjs.org/)
+2. [NextUI](https://nextui.org/)
+3. [tailwind css](https://tailwindcss.com/)
+4. [Stripe](https://stripe.com/)
+5. [npm](https://www.npmjs.com/)
 
