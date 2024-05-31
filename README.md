@@ -6,19 +6,19 @@
 - [x] Authentication using Clerk
 - [x] Landing page where we can see the Latest prompt, Top Sellers
 - [x] MarketPlace Features:
-    1.Categorized Prompt-Card
-    2.Proper Pagination
-    3.Search functionality
+    1. Categorized Prompt-Card
+    2. Proper Pagination
+    3. Search functionality
 - [x] About-Us , Contact-Us page
 - [x] In prompt DetailsPage:
-    1.Can See all the reviews, Description, Author
-    2.Can See Related Prompt
-    3.Can see proper rating 
-    4.User can purchase prompt using Stripe
+    1. Can See all the reviews, Description, Author
+    2. Can See Related Prompt
+    3. Can see proper rating 
+    4. User can purchase prompt using Stripe
 - [x] My orders page:
-    1.Can See all of his purchased prompt in an structured manner
-    2.Can Download the Source Code of the prompt
-    3.Can give proper review and rating
+    1. Can See all of his purchased prompt in an structured manner
+    2. Can Download the Source Code of the prompt
+    3. Can give proper review and rating
 
 ### Seller
 - [x] Can create a shop for selling prompt 
